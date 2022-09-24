@@ -1,1 +1,9 @@
-test
+FROM debian
+RUN \
+apt update -y && \
+apt -y install apache2 \
+ php \
+   libapache2-mod-php
+
+RUN echo "<?php phpinfo(); ?>" > /var/www/html/test.php
+CMD apachectl -DFOREGROUND
